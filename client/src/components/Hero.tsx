@@ -164,7 +164,7 @@ export default function Hero() {
             Get in touch
           </button>
           <a
-            href="/CV_Robin_Karlsson.pdf"
+            href="/Robin_Karlsson_CV.pdf"
             download
             style={{
               display: 'inline-flex',
