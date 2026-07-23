@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowDown } from 'lucide-react'
+import { ArrowDown, Download } from 'lucide-react'
 import type { Variants } from 'framer-motion'
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
@@ -183,6 +183,33 @@ export default function Hero() {
           >
             Get in touch
           </button>
+          <a
+            href="/CV_Robin_Karlsson.pdf"
+            download
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              padding: '0.75rem 1.375rem',
+              border: '1px solid var(--border)',
+              color: 'var(--text2)',
+              fontSize: '0.8125rem',
+              fontWeight: 500,
+              borderRadius: '100px',
+              textDecoration: 'none',
+              transition: 'border-color 0.3s ease, color 0.3s ease',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = 'var(--text2)'
+              e.currentTarget.style.color = 'var(--text)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = 'var(--border)'
+              e.currentTarget.style.color = 'var(--text2)'
+            }}
+          >
+            <Download size={13} /> CV
+          </a>
         </motion.div>
       </div>
 
