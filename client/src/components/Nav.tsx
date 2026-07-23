@@ -5,7 +5,7 @@ import { useTheme, type Theme } from '../context/ThemeContext'
 const THEMES: { id: Theme; label: string; bg: string; accent: string }[] = [
   { id: 'dark',  label: 'Dark',       bg: '#111111', accent: '#3b82f6' },
   { id: 'light', label: 'Editorial',  bg: '#f5f1eb', accent: '#1d4ed8' },
-  { id: 'bold',  label: 'Bold',       bg: '#0f0f0f', accent: '#84cc16' },
+  { id: 'bold',  label: 'Neon',       bg: '#0f0020', accent: '#a855f7' },
 ]
 
 const links = ['Work', 'About', 'Stack', 'Contact']
