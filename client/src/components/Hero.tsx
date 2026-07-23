@@ -71,26 +71,6 @@ export default function Hero() {
         Design Engineer · Helsinki, Finland
       </motion.p>
 
-      {/* Year pinned top-right */}
-      <motion.p
-        variants={fadeUp(0.1)}
-        initial="hidden"
-        animate="show"
-        style={{
-          position: 'absolute',
-          top: 'calc(64px + 1.5rem)',
-          right: 'clamp(1.5rem, 4vw, 4rem)',
-          fontSize: '0.75rem',
-          fontWeight: 500,
-          letterSpacing: '0.14em',
-          textTransform: 'uppercase',
-          color: 'var(--text2)',
-          transition: 'color 0.4s ease',
-        }}
-      >
-        Available 2026
-      </motion.p>
-
       {/* Name — stacked at bottom */}
       <motion.div
         variants={container}
