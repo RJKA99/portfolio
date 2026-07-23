@@ -3,7 +3,7 @@ import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 const tags = [
-  'M.Sc. Software Engineering',
+  'M.Sc. Student · Software Engineering',
   'LUT University',
   'Helsinki, Finland',
   'Claude Code',

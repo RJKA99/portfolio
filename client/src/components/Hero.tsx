@@ -131,7 +131,7 @@ export default function Hero() {
             transition: 'color 0.4s ease',
           }}
         >
-          I bridge design and engineering — building interfaces that feel as good as they work. M.Sc. Software Engineering, LUT University.
+          I bridge design and engineering — building interfaces that feel as good as they work. M.Sc. Student in Software Engineering at LUT University.
         </motion.p>
 
         <motion.div
