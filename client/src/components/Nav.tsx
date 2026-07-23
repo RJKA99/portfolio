@@ -102,6 +102,14 @@ export default function Nav() {
 
         {/* Theme switcher + hint */}
         <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: '6px', marginLeft: '0.5rem' }}>
+          <span style={{
+            fontSize: '0.75rem',
+            fontWeight: 500,
+            letterSpacing: '0.06em',
+            textTransform: 'uppercase',
+            color: 'var(--text2)',
+            marginRight: '2px',
+          }}>Theme</span>
           {THEMES.map((t) => (
             <button
               key={t.id}
