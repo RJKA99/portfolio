@@ -222,7 +222,26 @@ export default function Contact() {
           }}
         >
           <p style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text)', marginBottom: '0.5rem', transition: 'color 0.4s ease' }}>Message sent ✓</p>
-          <p style={{ fontSize: '0.875rem', color: 'var(--text2)', transition: 'color 0.4s ease' }}>I'll get back to you shortly.</p>
+          <p style={{ fontSize: '0.875rem', color: 'var(--text2)', marginBottom: '1.25rem', transition: 'color 0.4s ease' }}>I'll get back to you shortly.</p>
+          <button
+            onClick={() => setStatus('idle')}
+            style={{
+              padding: '0.6rem 1.25rem',
+              border: '1px solid var(--border)',
+              borderRadius: '100px',
+              background: 'transparent',
+              color: 'var(--text2)',
+              fontSize: '0.8125rem',
+              fontWeight: 500,
+              cursor: 'pointer',
+              fontFamily: 'inherit',
+              transition: 'all 0.2s ease',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--text2)'; e.currentTarget.style.color = 'var(--text)' }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text2)' }}
+          >
+            Send another message
+          </button>
         </motion.div>
       ) : (
         <motion.form
