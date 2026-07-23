@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+@import "tailwindcss";
+
+/* ─── Theme variables ─── */
+
+:root {
+  --transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+[data-theme="dark"] {
+  --bg:        #0a0a0a;
+  --bg2:       #111111;
+  --bg3:       #1c1c1c;
+  --text:      #f0f0f0;
+  --text2:     #71717a;
+  --accent:    #3b82f6;
+  --accent-lo: rgba(59,130,246,0.12);
+  --border:    rgba(255,255,255,0.07);
+  --hero-size: clamp(3.5rem, 9vw, 10rem);
+  --hero-wt:   700;
+  --hero-ls:   -0.03em;
+  --hero-tf:   none;
+  --head-font: 'Space Grotesk', sans-serif;
+}
+
+[data-theme="light"] {
+  --bg:        #f5f1eb;
+  --bg2:       #ffffff;
+  --bg3:       #e8e3da;
+  --text:      #1a1a1a;
+  --text2:     #6b7280;
+  --accent:    #1d4ed8;
+  --accent-lo: rgba(29,78,216,0.08);
+  --border:    rgba(0,0,0,0.08);
+  --hero-size: clamp(3rem, 8vw, 9rem);
+  --hero-wt:   400;
+  --hero-ls:   -0.02em;
+  --hero-tf:   none;
+  --head-font: 'Playfair Display', serif;
+}
+
+[data-theme="bold"] {
+  --bg:        #080808;
+  --bg2:       #0f0f0f;
+  --bg3:       #181818;
+  --text:      #ffffff;
+  --text2:     #a1a1aa;
+  --accent:    #84cc16;
+  --accent-lo: rgba(132,204,22,0.12);
+  --border:    rgba(255,255,255,0.1);
+  --hero-size: clamp(4rem, 12vw, 13rem);
+  --hero-wt:   700;
+  --hero-ls:   -0.05em;
+  --hero-tf:   uppercase;
+  --head-font: 'Space Grotesk', sans-serif;
+}
+
+/* ─── Base ─── */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; background: var(--bg); }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: var(--transition);
+}
+
+#root { width: 100%; min-height: 100vh; }
+
+::selection { background: var(--accent); color: #fff; }
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 2px; }
+
+/* ─── Typography helpers ─── */
+
+.hero-name {
+  font-family: var(--head-font);
+  font-size: var(--hero-size);
+  font-weight: var(--hero-wt);
+  letter-spacing: var(--hero-ls);
+  text-transform: var(--hero-tf);
+  line-height: 0.9;
+}
+
+.section-head {
+  font-family: var(--head-font);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--text);
+}
+
+[data-theme="light"] .section-head { font-weight: 400; }
+
+/* ─── Responsive grid helpers ─── */
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 6rem);
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .two-col { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* ─── Bold theme extras ─── */
+
+[data-theme="bold"] .hero-name {
+  background: linear-gradient(180deg, #ffffff 30%, #84cc16 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-theme="bold"] .section-head {
+  background: linear-gradient(180deg, #ffffff 40%, rgba(255,255,255,0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="bold"] .accent-marker {
+  color: #84cc16 !important;
+}
+
+/* ─── Light theme extras ─── */
+
+[data-theme="light"] body { background: #f5f1eb; }
+
+/* ─── Grain overlay ─── */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* ─── Accent line ─── */
+.accent-line {
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
