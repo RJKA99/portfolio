@@ -11,9 +11,21 @@ const projects = [
       "A comprehensive, cloud-native industrial operations and maintenance management system built entirely from scratch. I owned every layer: TypeScript/Node.js backend with REST APIs, a React + Tailwind UI optimized for remote management workflows, Docker containerization, and AWS deployment via Git-driven CI/CD.",
     tags: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'AWS', 'Docker', 'CI/CD'],
     highlight: 'Sole developer — end-to-end ownership from architecture to production deployment',
+    link: null,
   },
   {
     number: '02',
+    title: 'AI Component Generator',
+    subtitle: 'AI · React · Design-to-code',
+    year: '2026',
+    description:
+      "Describe a UI component in plain text — the app generates a live, interactive React component in seconds using Llama 3.3 via Groq. Features include iterative refinement, responsive preview, syntax-highlighted code view, one-click export as .tsx, and shareable URLs encoded in the hash. Built to demonstrate design-to-code thinking end-to-end.",
+    tags: ['React', 'TypeScript', 'Groq', 'Llama 3.3', 'Tailwind', 'Vite'],
+    highlight: 'From description to interactive component in seconds — live on the web',
+    link: 'https://ai-component-gen-delta.vercel.app',
+  },
+  {
+    number: '03',
     title: 'This Portfolio',
     subtitle: 'Design · React · MERN stack',
     year: '2026',
@@ -21,6 +33,7 @@ const projects = [
       "Built in a single session using MERN stack with React + Vite, Framer Motion, and three switchable design themes — each with distinct typography, palette, and visual character. The site itself is the design portfolio piece.",
     tags: ['React', 'Framer Motion', 'Node.js', 'Express', 'MongoDB', 'Vite'],
     highlight: 'Three switchable design themes — demonstrating design range in one artifact',
+    link: null,
   },
 ]
 
@@ -85,6 +98,28 @@ function ProjectCard({ project: p, index, inView }: {
           }}>
             {p.highlight}
           </div>
+          {p.link && (
+            <a
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                marginTop: '1rem',
+                fontSize: '0.8rem',
+                fontWeight: 500,
+                color: 'var(--accent)',
+                textDecoration: 'none',
+                transition: 'opacity 0.2s ease',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
+              onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+            >
+              View live ↗
+            </a>
+          )}
         </div>
 
         {/* Right — tags */}
