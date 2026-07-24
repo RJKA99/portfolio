@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { Mail } from 'lucide-react'
 
 function GitHubIcon({ size = 24 }: { size?: number }) {
@@ -50,6 +50,13 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [cooldown, setCooldown] = useState(0)
+
+  useEffect(() => {
+    if (cooldown <= 0) return
+    const t = setTimeout(() => setCooldown(c => c - 1), 1000)
+    return () => clearTimeout(t)
+  }, [cooldown])
   const [hoveredSocial, setHoveredSocial] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -65,6 +72,7 @@ export default function Contact() {
       if (!res.ok) throw new Error()
       setStatus('sent')
       setForm({ name: '', email: '', message: '' })
+      setCooldown(60)
     } catch {
       setStatus('error')
     }
@@ -224,23 +232,25 @@ export default function Contact() {
           <p style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text)', marginBottom: '0.5rem', transition: 'color 0.4s ease' }}>Message sent ✓</p>
           <p style={{ fontSize: '0.875rem', color: 'var(--text2)', marginBottom: '1.25rem', transition: 'color 0.4s ease' }}>I'll get back to you shortly.</p>
           <button
-            onClick={() => setStatus('idle')}
+            onClick={() => { if (cooldown === 0) setStatus('idle') }}
+            disabled={cooldown > 0}
             style={{
               padding: '0.6rem 1.25rem',
               border: '1px solid var(--border)',
               borderRadius: '100px',
               background: 'transparent',
-              color: 'var(--text2)',
+              color: cooldown > 0 ? 'var(--text2)' : 'var(--text2)',
               fontSize: '0.8125rem',
               fontWeight: 500,
-              cursor: 'pointer',
+              cursor: cooldown > 0 ? 'not-allowed' : 'pointer',
               fontFamily: 'inherit',
+              opacity: cooldown > 0 ? 0.5 : 1,
               transition: 'all 0.2s ease',
             }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--text2)'; e.currentTarget.style.color = 'var(--text)' }}
+            onMouseEnter={e => { if (cooldown === 0) { e.currentTarget.style.borderColor = 'var(--text2)'; e.currentTarget.style.color = 'var(--text)' } }}
             onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text2)' }}
           >
-            Send another message
+            {cooldown > 0 ? `Send another (${cooldown}s)` : 'Send another message'}
           </button>
         </motion.div>
       ) : (

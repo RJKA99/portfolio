@@ -44,6 +44,7 @@ export default function Nav() {
   }
 
   return (
+    <>
     <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -128,53 +129,70 @@ export default function Nav() {
             />
           ))}
 
-          {/* Hint tooltip */}
-          <AnimatePresence>
-            {showHint && (
-              <motion.div
-                initial={{ opacity: 0, y: -6, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -4, scale: 0.95 }}
-                transition={{ duration: 0.25 }}
-                onClick={dismissHint}
-                style={{
-                  position: 'absolute',
-                  top: 'calc(100% + 12px)',
-                  right: 0,
-                  whiteSpace: 'nowrap',
-                  background: 'var(--bg2)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '8px',
-                  padding: '0.5rem 0.875rem',
-                  fontSize: '0.75rem',
-                  fontWeight: 500,
-                  color: 'var(--text2)',
-                  cursor: 'pointer',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
-                  transition: 'background 0.4s ease, border-color 0.4s ease, color 0.4s ease',
-                  zIndex: 100,
-                }}
-              >
-                Switch themes here ↑
-                {/* Arrow */}
-                <div style={{
-                  position: 'absolute',
-                  top: '-5px',
-                  right: '18px',
-                  width: '8px',
-                  height: '8px',
-                  background: 'var(--bg2)',
-                  border: '1px solid var(--border)',
-                  borderBottom: 'none',
-                  borderRight: 'none',
-                  transform: 'rotate(45deg)',
-                  transition: 'background 0.4s ease, border-color 0.4s ease',
-                }} />
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
       </nav>
     </motion.header>
+
+      {/* Theme hint toast — bottom right */}
+      <AnimatePresence>
+        {showHint && (
+          <motion.div
+            initial={{ opacity: 0, y: 16, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.96 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              position: 'fixed',
+              bottom: '1.5rem',
+              right: '1.5rem',
+              zIndex: 100,
+              background: 'var(--bg2)',
+              border: '1px solid var(--border)',
+              borderRadius: '14px',
+              padding: '1rem 1.25rem',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.875rem',
+              transition: 'background 0.4s ease, border-color 0.4s ease',
+              maxWidth: '260px',
+            }}
+          >
+            <div style={{ display: 'flex', gap: '6px', flexShrink: 0 }}>
+              {THEMES.map((t) => (
+                <div key={t.id} style={{
+                  width: '12px', height: '12px', borderRadius: '50%',
+                  background: t.bg, border: `2px solid ${t.accent}`,
+                }} />
+              ))}
+            </div>
+            <p style={{
+              fontSize: '0.8rem',
+              fontWeight: 500,
+              color: 'var(--text2)',
+              lineHeight: 1.4,
+              margin: 0,
+              transition: 'color 0.4s ease',
+            }}>
+              Try switching themes in the top right
+            </p>
+            <button
+              onClick={dismissHint}
+              style={{
+                background: 'none', border: 'none', cursor: 'pointer',
+                color: 'var(--text2)', fontSize: '1rem', lineHeight: 1,
+                padding: '0 0 0 0.25rem', flexShrink: 0,
+                transition: 'color 0.2s ease',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'var(--text2)')}
+              aria-label="Dismiss"
+            >
+              ×
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
