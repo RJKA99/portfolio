@@ -8,7 +8,7 @@ const THEMES: { id: Theme; label: string; bg: string; accent: string }[] = [
   { id: 'bold',  label: 'Neon',      bg: '#0f0020', accent: '#a855f7' },
 ]
 
-const links = ['Work', 'About', 'Stack', 'Contact']
+const links = ['About', 'Work', 'Stack', 'Process', 'Contact']
 
 const HINT_KEY = 'rk-theme-hint-seen'
 

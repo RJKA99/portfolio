@@ -12,6 +12,7 @@ const projects = [
     tags: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'AWS', 'Docker', 'CI/CD'],
     highlight: 'Sole developer — end-to-end ownership from architecture to production deployment',
     link: null,
+    note: 'Private deployment — built for a single company\'s internal use, happy to walk through it',
   },
   {
     number: '02',
@@ -26,14 +27,25 @@ const projects = [
   },
   {
     number: '03',
-    title: 'This Portfolio',
-    subtitle: 'Design · React · MERN stack',
+    title: 'NextUp',
+    subtitle: 'Full-stack · AI agent integration · Production',
     year: '2026',
     description:
-      "Built in a single session using MERN stack with React + Vite, Framer Motion, and three switchable design themes — each with distinct typography, palette, and visual character. The site itself is the design portfolio piece.",
-    tags: ['React', 'Framer Motion', 'Node.js', 'Express', 'MongoDB', 'Vite'],
-    highlight: 'Three switchable design themes — demonstrating design range in one artifact',
-    link: null,
+      "A task manager that doesn't just list what's due — it ranks tasks by urgency and relevance and surfaces a single 'do this next' recommendation. AI agents (Claude Desktop, Claude Code, or any MCP client) create, schedule, and update tasks on a user's behalf through an embedded MCP server authenticated with per-user API keys, then get rated on how accurate their time and relevance estimates were.",
+    tags: ['React', 'TypeScript', 'Express', 'MongoDB', 'MCP', 'Vercel'],
+    highlight: 'AI agents plan your work — and get scored on how well they estimated it',
+    link: 'https://nextup-todo.vercel.app',
+  },
+  {
+    number: '04',
+    title: 'Motion Playground',
+    subtitle: 'Interaction design · Framer Motion · Component library',
+    year: '2026',
+    description:
+      "A library of interactive micro-interaction and gesture demos — magnetic buttons, 3D tilt cards, drag-to-reorder lists, swipe-to-dismiss cards, a shared-layout tab indicator, and more — each rendered live next to its own source code. Built to explore what Framer Motion can express beyond a basic fade-in.",
+    tags: ['React', 'TypeScript', 'Framer Motion', 'React Router', 'Vite'],
+    highlight: 'A dozen-plus hand-built interaction demos, each with its source code inline',
+    link: 'https://motionplayground.vercel.app',
   },
 ]
 
@@ -98,7 +110,7 @@ function ProjectCard({ project: p, index, inView }: {
           }}>
             {p.highlight}
           </div>
-          {p.link && (
+          {p.link ? (
             <a
               href={p.link}
               target="_blank"
@@ -119,7 +131,17 @@ function ProjectCard({ project: p, index, inView }: {
             >
               View live ↗
             </a>
-          )}
+          ) : p.note ? (
+            <p style={{
+              marginTop: '1rem',
+              fontSize: '0.8rem',
+              fontStyle: 'italic',
+              color: 'var(--text2)',
+              transition: 'color 0.4s ease',
+            }}>
+              {p.note}
+            </p>
+          ) : null}
         </div>
 
         {/* Right — tags */}

@@ -7,7 +7,7 @@ const tags = [
   'LUT University',
   'Helsinki, Finland',
   'Claude Code',
-  'Sole developer',
+  'Independent builder',
   'Reserve Officer',
 ]
 

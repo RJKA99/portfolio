@@ -239,7 +239,7 @@ export default function Contact() {
               border: '1px solid var(--border)',
               borderRadius: '100px',
               background: 'transparent',
-              color: cooldown > 0 ? 'var(--text2)' : 'var(--text2)',
+              color: cooldown > 0 ? 'var(--text2)' : 'var(--text)',
               fontSize: '0.8125rem',
               fontWeight: 500,
               cursor: cooldown > 0 ? 'not-allowed' : 'pointer',
@@ -264,7 +264,7 @@ export default function Contact() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
             {(['name', 'email'] as const).map((field) => (
               <div key={field}>
-                <label style={{
+                <label htmlFor={`contact-${field}`} style={{
                   display: 'block', fontSize: '0.75rem', fontWeight: 600,
                   letterSpacing: '0.08em', textTransform: 'uppercase',
                   color: 'var(--text2)', marginBottom: '0.5rem', transition: 'color 0.4s ease',
@@ -272,6 +272,7 @@ export default function Contact() {
                   {field === 'name' ? 'Name' : 'Email'}
                 </label>
                 <input
+                  id={`contact-${field}`}
                   style={inputStyle}
                   type={field === 'email' ? 'email' : 'text'}
                   required
@@ -286,7 +287,7 @@ export default function Contact() {
           </div>
 
           <div>
-            <label style={{
+            <label htmlFor="contact-message" style={{
               display: 'block', fontSize: '0.75rem', fontWeight: 600,
               letterSpacing: '0.08em', textTransform: 'uppercase',
               color: 'var(--text2)', marginBottom: '0.5rem', transition: 'color 0.4s ease',
@@ -294,6 +295,7 @@ export default function Contact() {
               Message
             </label>
             <textarea
+              id="contact-message"
               style={{ ...inputStyle, minHeight: '130px', resize: 'vertical' }}
               required
               placeholder="What's on your mind?"

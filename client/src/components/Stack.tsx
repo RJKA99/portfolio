@@ -11,7 +11,7 @@ const topSkills = [
     desc: 'AI-assisted development as a daily multiplier — not a crutch',
   },
   {
-    name: 'Full-Stack / Sole Dev',
+    name: 'Full-Stack Ownership',
     desc: 'End-to-end ownership: schema, API, UI, deploy',
   },
   {
@@ -23,19 +23,19 @@ const topSkills = [
 const groups = [
   {
     label: 'Frontend',
-    items: ['React', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'Framer Motion'],
+    items: ['React', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'Framer Motion', 'Vite'],
   },
   {
     label: 'Backend',
-    items: ['Node.js', 'Express', 'REST APIs', 'MongoDB', 'SQL'],
+    items: ['Node.js', 'Express', 'REST APIs', 'MongoDB', 'SQL', 'JWT Auth'],
   },
   {
     label: 'Cloud & DevOps',
-    items: ['AWS (ECS, S3)', 'Docker', 'CI/CD Pipelines', 'Git & GitHub'],
+    items: ['AWS (ECS, S3)', 'Docker', 'CI/CD Pipelines', 'Git & GitHub', 'Vercel'],
   },
   {
     label: 'AI & Workflow',
-    items: ['Claude Code', 'AI-assisted dev', 'Figma (basics)', 'Linear'],
+    items: ['Claude Code', 'AI-assisted dev', 'MCP (Model Context Protocol)', 'Figma', 'Linear'],
   },
 ]
 
