@@ -5,6 +5,9 @@ dist/
 .DS_Store
 .vercel
 job_desc.md
+*_job_desc.md
+applications_status.md
+*_cover_letter.md
 
 # Terraform
 infra/.terraform/
