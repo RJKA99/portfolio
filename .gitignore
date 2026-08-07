@@ -5,3 +5,10 @@ dist/
 .DS_Store
 .vercel
 job_desc.md
+
+# Terraform
+infra/.terraform/
+infra/*.tfstate
+infra/*.tfstate.*
+infra/tfplan
+infra/*.tfplan
