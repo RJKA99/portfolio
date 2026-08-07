@@ -27,15 +27,15 @@ const groups = [
   },
   {
     label: 'Backend',
-    items: ['Node.js', 'Express', 'REST APIs', 'MongoDB', 'SQL', 'JWT Auth'],
+    items: ['Node.js', 'Express', 'REST APIs', 'Java', 'Python', 'MongoDB', 'SQL', 'JWT Auth'],
   },
   {
     label: 'Cloud & DevOps',
-    items: ['AWS (ECS, S3)', 'Docker', 'CI/CD Pipelines', 'Git & GitHub', 'Vercel'],
+    items: ['AWS (ECS, S3)', 'Azure (Static Web Apps, AI Search)', 'Terraform', 'Docker', 'CI/CD Pipelines', 'Git & GitHub', 'Vercel'],
   },
   {
     label: 'AI & Workflow',
-    items: ['Claude Code', 'AI-assisted dev', 'MCP (Model Context Protocol)', 'Figma', 'Linear'],
+    items: ['Claude Code', 'AI-assisted dev', 'MCP (Model Context Protocol)', 'RAG', 'Figma', 'Linear'],
   },
 ]
 

@@ -53,7 +53,7 @@ export default function About() {
           >
             Builder.
             <br />
-            Designer.
+            Engineer.
             <br />
             Leader.
           </motion.h2>
@@ -68,7 +68,7 @@ export default function About() {
             style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
           >
             <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--text)', transition: 'color 0.4s ease' }}>
-              I'm a full-stack developer and design engineer finishing my Master's at LUT University. I take products from concept to production — owning the architecture, the UX decisions, and everything in between.
+              I'm a full-stack developer finishing my Master's at LUT University, building AI-powered products end-to-end. I own the architecture, the backend, and the UI — with a strong eye for UX along the way.
             </p>
             <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--text2)', transition: 'color 0.4s ease' }}>
               My edge is the combination: a military-trained operator's discipline applied to engineering problems, built-in empathy for users from sales, and the technical depth to ship ambitious things alone. I've been using Claude Code as a core part of my workflow — not as a crutch, but as a multiplier.

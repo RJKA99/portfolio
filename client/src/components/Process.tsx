@@ -9,8 +9,8 @@ const steps = [
   },
   {
     num: '02',
-    title: 'Design in the browser',
-    body: 'I work directly in React — iterating on layouts, spacing, and interaction patterns without a handoff gap. What you see is what ships.',
+    title: 'Build in the browser',
+    body: 'I work directly in React — iterating on logic, layout, and interaction without a handoff gap. What you see is what ships.',
   },
   {
     num: '03',
@@ -58,7 +58,7 @@ export default function Process() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          Design → Code, no gap
+          Idea → Production, no gap
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ export default function Process() {
           transition={{ duration: 0.7, delay: 0.15 }}
           style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--text2)', paddingTop: '0.5rem', transition: 'color 0.4s ease' }}
         >
-          I believe the best Design Engineers eliminate the handoff entirely. The mental model I bring to every feature: own it from first sketch to production metric.
+          I believe in owning the full loop, with no handoffs. The mental model I bring to every feature: from first prototype to production metric, I build and ship it myself — often with AI as a pair programmer.
         </motion.p>
       </div>
 

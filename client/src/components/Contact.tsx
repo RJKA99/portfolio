@@ -132,7 +132,7 @@ export default function Contact() {
           maxWidth: '480px', transition: 'color 0.4s ease',
         }}
       >
-        Open to Design Engineer and frontend-heavy full-stack roles. If you're building something interesting, I want to hear about it.
+        Open to full-stack and AI engineering roles. If you're building something interesting, I want to hear about it.
       </motion.p>
 
       {/* Social links — big and prominent */}

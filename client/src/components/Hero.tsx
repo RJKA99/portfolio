@@ -68,7 +68,7 @@ export default function Hero() {
           transition: 'color 0.4s ease',
         }}
       >
-        Design Engineer · Helsinki, Finland
+        AI-Native Full-Stack Engineer · Helsinki, Finland
       </motion.p>
 
       {/* Name — stacked at bottom */}
@@ -111,7 +111,7 @@ export default function Hero() {
             transition: 'color 0.4s ease',
           }}
         >
-          I bridge design and engineering — building interfaces that feel as good as they work. M.Sc. Student in Software Engineering at LUT University.
+          I build full-stack products end-to-end — architecture, backend, UI, deploy — with AI as a core part of how I ship. M.Sc. Student in Software Engineering at LUT University.
         </motion.p>
 
         <motion.div
