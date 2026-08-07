@@ -1,6 +1,6 @@
 locals {
   project  = "portfolio"
-  location = "westeurope" # Static Web Apps free tier isn't available in all regions; West Europe is.
+  location = "eastus2" # West Europe rejected new Static Web Apps on this subscription (403); East US 2 is a supported SWA region.
 }
 
 resource "azurerm_resource_group" "main" {
