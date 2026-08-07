@@ -47,6 +47,17 @@ const projects = [
     highlight: 'A dozen-plus hand-built interaction demos, each with its source code inline',
     link: 'https://motionplayground.vercel.app',
   },
+  {
+    number: '05',
+    title: 'Azure Doc Assistant',
+    subtitle: 'RAG · Azure · Infrastructure as Code',
+    year: '2026',
+    description:
+      "A document Q&A service built hands-on to prove Azure and Terraform skills: ask a question via curl, or through Claude Desktop as an MCP client, and it gets embedded locally with transformers.js, matched against documents indexed in Azure AI Search, and answered through the Claude API with sources. I built the ingestion pipeline myself, parsing, chunking, embedding, and indexing PDF and Markdown documents. The whole infrastructure (Container Apps, Key Vault, Log Analytics, AI Search, Blob Storage) is provisioned through Terraform, with secrets pulled from Key Vault at runtime. It reuses NextUp's MCP interface, so the same client can query both tasks and documents.",
+    tags: ['Azure', 'Terraform', 'RAG', 'Node.js', 'TypeScript', 'MCP', 'Azure AI Search'],
+    highlight: 'Full RAG pipeline on Azure, provisioned end to end with Terraform',
+    link: 'https://github.com/RJKA99/azure-doc-assistant',
+  },
 ]
 
 function ProjectCard({ project: p, index, inView }: {
