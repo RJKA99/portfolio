@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react'
 
 const projects = [
@@ -56,7 +56,15 @@ const projects = [
       "A document Q&A service built hands-on to prove Azure and Terraform skills: ask a question via curl, or through Claude Desktop as an MCP client, and it gets embedded locally with transformers.js, matched against documents indexed in Azure AI Search, and answered through the Claude API with sources. I built the ingestion pipeline myself, parsing, chunking, embedding, and indexing PDF and Markdown documents. The whole infrastructure (Container Apps, Key Vault, Log Analytics, AI Search, Blob Storage) is provisioned through Terraform, with secrets pulled from Key Vault at runtime. It reuses NextUp's MCP interface, so the same client can query both tasks and documents.",
     tags: ['Azure', 'Terraform', 'RAG', 'Node.js', 'TypeScript', 'MCP', 'Azure AI Search'],
     highlight: 'Full RAG pipeline on Azure, provisioned end to end with Terraform',
-    link: 'https://github.com/RJKA99/azure-doc-assistant',
+    link: null,
+    repoUrl: 'https://github.com/RJKA99/azure-doc-assistant',
+    demo: {
+      note: 'Demo — sample query against an example document set',
+      query: "What's the process for requesting a new laptop?",
+      answer:
+        "Submit a ticket via the IT portal with your manager's approval attached. Standard laptops ship within 5 business days; specialized hardware requires a 2-week lead time for procurement approval.",
+      sources: ['IT_Onboarding_Guide.pdf, p.4', 'Hardware_Request_Policy.md'],
+    },
   },
 ]
 
@@ -66,6 +74,7 @@ function ProjectCard({ project: p, index, inView }: {
   inView: boolean
 }) {
   const [hovered, setHovered] = useState(false)
+  const [showDemo, setShowDemo] = useState(false)
 
   return (
     <motion.div
@@ -121,38 +130,141 @@ function ProjectCard({ project: p, index, inView }: {
           }}>
             {p.highlight}
           </div>
-          {p.link ? (
-            <a
-              href={p.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                marginTop: '1rem',
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap', marginTop: '1rem' }}>
+            {p.link ? (
+              <a
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  fontSize: '0.8rem',
+                  fontWeight: 500,
+                  color: 'var(--accent)',
+                  textDecoration: 'none',
+                  transition: 'opacity 0.2s ease',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
+                onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+              >
+                View live ↗
+              </a>
+            ) : null}
+
+            {p.demo ? (
+              <button
+                onClick={() => setShowDemo(v => !v)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  fontSize: '0.8rem',
+                  fontWeight: 500,
+                  color: 'var(--accent)',
+                  background: 'none',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  transition: 'opacity 0.2s ease',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
+                onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+              >
+                {showDemo ? 'Hide demo ↑' : 'See demo ↓'}
+              </button>
+            ) : null}
+
+            {p.repoUrl ? (
+              <a
+                href={p.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontSize: '0.8rem',
+                  fontWeight: 500,
+                  color: 'var(--text2)',
+                  textDecoration: 'none',
+                  transition: 'color 0.2s ease',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--text2)')}
+              >
+                Source ↗
+              </a>
+            ) : null}
+
+            {!p.link && !p.demo && p.note ? (
+              <p style={{
                 fontSize: '0.8rem',
-                fontWeight: 500,
-                color: 'var(--accent)',
-                textDecoration: 'none',
-                transition: 'opacity 0.2s ease',
-              }}
-              onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
-              onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
-            >
-              View live ↗
-            </a>
-          ) : p.note ? (
-            <p style={{
-              marginTop: '1rem',
-              fontSize: '0.8rem',
-              fontStyle: 'italic',
-              color: 'var(--text2)',
-              transition: 'color 0.4s ease',
-            }}>
-              {p.note}
-            </p>
-          ) : null}
+                fontStyle: 'italic',
+                color: 'var(--text2)',
+                transition: 'color 0.4s ease',
+              }}>
+                {p.note}
+              </p>
+            ) : null}
+          </div>
+
+          <AnimatePresence>
+            {showDemo && p.demo && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                style={{ overflow: 'hidden', maxWidth: '560px' }}
+              >
+                <div style={{
+                  marginTop: '1.25rem',
+                  padding: '1.25rem',
+                  border: '1px solid var(--border)',
+                  borderRadius: '12px',
+                  background: 'var(--bg2)',
+                  transition: 'background 0.4s ease, border-color 0.4s ease',
+                }}>
+                  <p style={{
+                    fontSize: '0.7rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                    color: 'var(--text2)',
+                    marginBottom: '1rem',
+                    transition: 'color 0.4s ease',
+                  }}>
+                    {p.demo.note}
+                  </p>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
+                    <div>
+                      <span style={{ fontSize: '0.7rem', fontFamily: 'monospace', color: 'var(--accent)', fontWeight: 700, transition: 'color 0.4s ease' }}>Q</span>
+                      <p style={{ fontSize: '0.875rem', color: 'var(--text)', lineHeight: 1.55, marginTop: '0.25rem', transition: 'color 0.4s ease' }}>
+                        {p.demo.query}
+                      </p>
+                    </div>
+                    <div>
+                      <span style={{ fontSize: '0.7rem', fontFamily: 'monospace', color: 'var(--accent)', fontWeight: 700, transition: 'color 0.4s ease' }}>A</span>
+                      <p style={{ fontSize: '0.875rem', color: 'var(--text)', lineHeight: 1.55, marginTop: '0.25rem', transition: 'color 0.4s ease' }}>
+                        {p.demo.answer}
+                      </p>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', paddingTop: '0.375rem', borderTop: '1px solid var(--border)', transition: 'border-color 0.4s ease' }}>
+                      <span style={{ fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--text2)', transition: 'color 0.4s ease' }}>
+                        Sources
+                      </span>
+                      {p.demo.sources.map((s) => (
+                        <span key={s} style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: 'var(--text2)', transition: 'color 0.4s ease' }}>
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Right — tags */}
