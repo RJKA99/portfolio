@@ -66,9 +66,35 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       await Contact.create({ name, email, message })
     }
     console.log(`📬 ${name} <${email}> [${ip}]`)
+    await notifyTelegram({ name, email, message })
     return res.json({ ok: true })
   } catch (err) {
     console.error(err)
     return res.status(500).json({ error: 'Server error' })
+  }
+}
+
+async function notifyTelegram({ name, email, message }: { name: string; email: string; message: string }) {
+  const token = process.env.TELEGRAM_BOT_TOKEN
+  const chatId = process.env.TELEGRAM_CHAT_ID
+  if (!token || !chatId) return
+
+  const text =
+    `🚨🚨 UUSI YHTEYDENOTTO PORTFOLIOSTA 🚨🚨\n\n` +
+    `Nimi: ${name}\n` +
+    `Sähköposti: ${email}\n\n` +
+    `${message}`
+
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ chat_id: chatId, text, disable_notification: 'false' }),
+    })
+    if (!res.ok) {
+      console.error('Telegram-lähetys epäonnistui:', res.status, await res.text())
+    }
+  } catch (err) {
+    console.error('Telegram-lähetys epäonnistui:', err)
   }
 }
