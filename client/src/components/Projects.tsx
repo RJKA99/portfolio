@@ -16,14 +16,15 @@ const projects = [
   },
   {
     number: '02',
-    title: 'AI Component Generator',
-    subtitle: 'AI · React · Design-to-code',
+    title: 'Pharmacy Finder',
+    subtitle: 'Full-stack · Web + iOS · Production',
     year: '2026',
     description:
-      "Describe a UI component in plain text — the app generates a live, interactive React component in seconds using Llama 3.3 via Groq. Features include iterative refinement, responsive preview, syntax-highlighted code view, one-click export as .tsx, and shareable URLs encoded in the hash. Built to demonstrate design-to-code thinking end-to-end.",
-    tags: ['React', 'TypeScript', 'Groq', 'Llama 3.3', 'Tailwind', 'Vite'],
-    highlight: 'From description to interactive component in seconds — live on the web',
-    link: 'https://ai-component-gen-delta.vercel.app',
+      "Finds the nearest pharmacies to any point in Finland and gives walking directions, backed by a bundled dataset of ~900 pharmacies extracted from Overture Maps. The browser never talks to the routing providers directly — everything is proxied server-side with rate limiting and a strict CSP, and address lookup/directions fall back from OpenRouteService to GraphHopper if the primary provider fails. Architecture and security decisions are written up as ADRs. The same API backs a native SwiftUI iOS app.",
+    tags: ['React', 'TypeScript', 'Node.js', 'Overture Maps', 'Swift', 'Vercel'],
+    highlight: 'Server-side proxying, provider fallback, and documented ADRs — not just a happy-path demo',
+    link: 'https://pharmacy-finder.robinkarlsson.fi',
+    repoUrl: 'https://github.com/RJKA99/pharmacy-finder-web',
   },
   {
     number: '03',
@@ -38,14 +39,14 @@ const projects = [
   },
   {
     number: '04',
-    title: 'Motion Playground',
-    subtitle: 'Interaction design · Framer Motion · Component library',
+    title: 'Fitness Tracker',
+    subtitle: 'Full-stack · AI features · Production',
     year: '2026',
     description:
-      "A library of interactive micro-interaction and gesture demos — magnetic buttons, 3D tilt cards, drag-to-reorder lists, swipe-to-dismiss cards, a shared-layout tab indicator, and more — each rendered live next to its own source code. Built to explore what Framer Motion can express beyond a basic fade-in.",
-    tags: ['React', 'TypeScript', 'Framer Motion', 'React Router', 'Vite'],
-    highlight: 'A dozen-plus hand-built interaction demos, each with its source code inline',
-    link: 'https://motionplayground.vercel.app',
+      "A personal workout and food-tracking app built around genuinely useful AI features rather than a chatbot bolted on the side: voice-based food logging, photo-based calorie estimation, native barcode detection for packaged food, and an AI progress analysis that reads your logged history and explains what's actually changing. Streaks and PR callouts give positive reinforcement on data that was already being collected.",
+    tags: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'AI Vision', 'Vercel'],
+    highlight: 'AI features that read real usage data — voice logging, photo calorie estimation, barcode scanning',
+    link: 'https://fitness-tracker-roan-theta-21.vercel.app',
   },
   {
     number: '05',
