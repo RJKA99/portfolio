@@ -13,6 +13,7 @@ const projects = [
     highlight: 'Sole developer — end-to-end ownership from architecture to production deployment',
     link: null,
     note: 'Private deployment — built for a single company\'s internal use, happy to walk through it',
+    why: "Honk Industries needed to replace a patchwork of spreadsheets and phone calls with one system their field technicians could actually use. Built as part of my bachelor's thesis — it's still running their maintenance operations today.",
   },
   {
     number: '02',
@@ -25,6 +26,7 @@ const projects = [
     highlight: 'Server-side proxying, provider fallback, and documented ADRs — not just a happy-path demo',
     link: 'https://pharmacy-finder.robinkarlsson.fi',
     repoUrl: 'https://github.com/RJKA99/pharmacy-finder-web',
+    why: "Built to clear a CTF-style technical gate in a job application: prove I could ship a real, production-grade app end-to-end, not just talk about it. It happened to overlap with a university course assignment too, so the same work ended up serving two purposes at once.",
   },
   {
     number: '03',
@@ -36,6 +38,7 @@ const projects = [
     tags: ['React', 'TypeScript', 'Express', 'MongoDB', 'MCP', 'Vercel'],
     highlight: 'AI agents plan your work — and get scored on how well they estimated it',
     link: 'https://nextup-todo.vercel.app',
+    why: "I kept losing track of what to work on next in my own task list, so I built a tool where AI agents handle the scheduling — and get scored on how good their estimates actually are.",
   },
   {
     number: '04',
@@ -47,6 +50,7 @@ const projects = [
     tags: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'AI Vision', 'Vercel'],
     highlight: 'AI features that read real usage data — voice logging, photo calorie estimation, barcode scanning',
     link: 'https://fitness-tracker-roan-theta-21.vercel.app',
+    why: "Built to replace three different fitness apps I was using badly — one place where AI actually reads my logged data instead of me typing it into a chatbot by hand.",
   },
   {
     number: '05',
@@ -66,6 +70,7 @@ const projects = [
         "Submit a ticket via the IT portal with your manager's approval attached. Standard laptops ship within 5 business days; specialized hardware requires a 2-week lead time for procurement approval.",
       sources: ['IT_Onboarding_Guide.pdf, p.4', 'Hardware_Request_Policy.md'],
     },
+    why: "Built while writing my bachelor's thesis, when I wanted an efficient way to search across multiple sources instead of digging through documents by hand — and used it as an excuse to properly learn Azure at the same time.",
   },
   {
     number: '06',
@@ -78,6 +83,7 @@ const projects = [
     highlight: 'An AI agent that pre-screens job postings and asks for a thumbs up before it acts',
     link: null,
     note: 'Private automation — runs against my own job search, happy to walk through it',
+    why: "Manually re-checking job boards every day during my own search was eating hours — built this so the monitoring happens automatically and I only spend time on postings worth a look.",
   },
 ]
 
@@ -88,6 +94,7 @@ function ProjectCard({ project: p, index, inView }: {
 }) {
   const [hovered, setHovered] = useState(false)
   const [showDemo, setShowDemo] = useState(false)
+  const [showWhy, setShowWhy] = useState(false)
 
   return (
     <motion.div
@@ -190,6 +197,30 @@ function ProjectCard({ project: p, index, inView }: {
               </button>
             ) : null}
 
+            {p.why ? (
+              <button
+                onClick={() => setShowWhy(v => !v)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  fontSize: '0.8rem',
+                  fontWeight: 500,
+                  color: 'var(--accent)',
+                  background: 'none',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  transition: 'opacity 0.2s ease',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
+                onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+              >
+                {showWhy ? 'Hide why ↑' : 'Why? ↓'}
+              </button>
+            ) : null}
+
             {p.repoUrl ? (
               <a
                 href={p.repoUrl}
@@ -220,6 +251,42 @@ function ProjectCard({ project: p, index, inView }: {
               </p>
             ) : null}
           </div>
+
+          <AnimatePresence>
+            {showWhy && p.why && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                style={{ overflow: 'hidden', maxWidth: '560px' }}
+              >
+                <div style={{
+                  marginTop: '1.25rem',
+                  padding: '1.25rem',
+                  border: '1px solid var(--border)',
+                  borderRadius: '12px',
+                  background: 'var(--bg2)',
+                  transition: 'background 0.4s ease, border-color 0.4s ease',
+                }}>
+                  <p style={{
+                    fontSize: '0.7rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                    color: 'var(--text2)',
+                    marginBottom: '0.625rem',
+                    transition: 'color 0.4s ease',
+                  }}>
+                    Why I built this
+                  </p>
+                  <p style={{ fontSize: '0.875rem', color: 'var(--text)', lineHeight: 1.6, transition: 'color 0.4s ease' }}>
+                    {p.why}
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <AnimatePresence>
             {showDemo && p.demo && (
