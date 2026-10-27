@@ -50,7 +50,7 @@ const projects = [
     tags: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'AI Vision', 'Vercel'],
     highlight: 'AI features that read real usage data — voice logging, photo calorie estimation, barcode scanning',
     link: 'https://fitness-tracker-roan-theta-21.vercel.app',
-    why: "I was juggling three different apps to track workouts, food, and weight, none of which fit how I actually train and eat — so instead of compromising further, I built my own and shaped it exactly how I wanted. It also puts AI to work on data that's already there: reading my logged history directly instead of me retyping everything into a separate chatbot.",
+    why: "I wanted a workout and food-tracking app that actually fit how I train and eat, but nothing on the market felt right — so I built and customized my own instead of compromising. It also puts AI to work on data that's already there: reading my logged history directly instead of me retyping everything into a separate chatbot.",
   },
   {
     number: '05',
