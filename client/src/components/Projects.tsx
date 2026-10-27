@@ -37,7 +37,7 @@ const projects = [
       "A task manager that doesn't just list what's due — it ranks tasks by urgency and relevance and surfaces a single 'do this next' recommendation. AI agents (Claude Desktop, Claude Code, or any MCP client) create, schedule, and update tasks on a user's behalf through an embedded MCP server authenticated with per-user API keys, then get rated on how accurate their time and relevance estimates were.",
     tags: ['React', 'TypeScript', 'Express', 'MongoDB', 'MCP', 'Vercel'],
     highlight: 'AI agents plan your work — and get scored on how well they estimated it',
-    link: 'https://nextup-todo.vercel.app',
+    link: 'https://nextup.robinkarlsson.fi',
     why: "I kept losing track of what to work on next in my own task list, so I built a tool where AI agents handle the scheduling — and get scored on how good their estimates actually are.",
   },
   {
