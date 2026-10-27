@@ -68,7 +68,7 @@ export default function Hero() {
           transition: 'color 0.4s ease',
         }}
       >
-        AI-Native Full-Stack Engineer · Helsinki, Finland
+        AI-Native Full-Stack Engineer · Finland
       </motion.p>
 
       {/* Name — stacked at bottom */}

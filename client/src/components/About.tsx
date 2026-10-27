@@ -5,10 +5,8 @@ import { useRef } from 'react'
 const tags = [
   'M.Sc. Student · Software Engineering',
   'LUT University',
-  'Helsinki, Finland',
   'Claude Code',
   'Independent builder',
-  'Reserve Officer',
 ]
 
 export default function About() {
@@ -71,7 +69,7 @@ export default function About() {
               I'm a full-stack developer finishing my Master's at LUT University, building AI-powered products end-to-end. I own the architecture, the backend, and the UI — with a strong eye for UX along the way.
             </p>
             <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--text2)', transition: 'color 0.4s ease' }}>
-              My edge is the combination: a military-trained operator's discipline applied to engineering problems, built-in empathy for users from sales, and the technical depth to ship ambitious things alone. I've been using Claude Code as a core part of my workflow — not as a crutch, but as a multiplier.
+              My edge is the combination: built-in empathy for users from a background in sales, and the technical depth to ship ambitious things alone. I've been using Claude Code as a core part of my workflow — not as a crutch, but as a multiplier.
             </p>
           </motion.div>
 

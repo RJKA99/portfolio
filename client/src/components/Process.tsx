@@ -24,8 +24,8 @@ const steps = [
   },
   {
     num: '05',
-    title: 'Ship and iterate',
-    body: 'I deploy early and treat production as a feedback tool. Real users on real devices reveal things that no local environment ever will.',
+    title: 'Test it before it ships',
+    body: 'I use Claude Code to write test coverage and catch edge cases before anything goes live — not just to generate code faster. The bar is software that works correctly the first time, not something I patch after someone hits a bug.',
   },
 ]
 
