@@ -53,7 +53,7 @@ export default function About() {
             <br />
             Engineer.
             <br />
-            Leader.
+            Owner.
           </motion.h2>
         </div>
 
