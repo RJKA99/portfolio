@@ -8,7 +8,7 @@ const projects = [
     subtitle: 'Full-stack · Sole developer · Production',
     year: '2025',
     description:
-      "A comprehensive, cloud-native industrial operations and maintenance management system built entirely from scratch. I owned every layer: TypeScript/Node.js backend with REST APIs, a React + Tailwind UI optimized for remote management workflows, Docker containerization, and AWS deployment via Git-driven CI/CD.",
+      "A comprehensive, cloud-native ERP / industrial operations and maintenance management system built entirely from scratch. I owned every layer: TypeScript/Node.js backend with REST APIs, a React + Tailwind UI optimized for remote management workflows, Docker containerization, and AWS deployment via Git-driven CI/CD.",
     tags: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'AWS', 'Docker', 'CI/CD'],
     highlight: 'Sole developer — end-to-end ownership from architecture to production deployment',
     link: null,
@@ -66,6 +66,18 @@ const projects = [
         "Submit a ticket via the IT portal with your manager's approval attached. Standard laptops ship within 5 business days; specialized hardware requires a 2-week lead time for procurement approval.",
       sources: ['IT_Onboarding_Guide.pdf, p.4', 'Hardware_Request_Policy.md'],
     },
+  },
+  {
+    number: '06',
+    title: 'n8n Job Monitor',
+    subtitle: 'Automation · AI agent · Human-in-the-loop',
+    year: '2026',
+    description:
+      "An automation that scans job boards for new postings, classifies each one with a Claude agent against my own fit criteria, and sends the best matches to a Telegram bot for one-tap approve/reject before anything is added to my application tracker. No web UI — it's built entirely on n8n workflows and an LLM classifier, running on a schedule so I don't have to manually re-check listings every day.",
+    tags: ['n8n', 'Claude Agent', 'Telegram Bot API', 'Automation'],
+    highlight: 'An AI agent that pre-screens job postings and asks for a thumbs up before it acts',
+    link: null,
+    note: 'Private automation — runs against my own job search, happy to walk through it',
   },
 ]
 

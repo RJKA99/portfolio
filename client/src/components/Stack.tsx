@@ -35,7 +35,7 @@ const groups = [
   },
   {
     label: 'AI & Workflow',
-    items: ['Claude Code', 'AI-assisted dev', 'MCP (Model Context Protocol)', 'RAG', 'Figma', 'Linear'],
+    items: ['Claude Code', 'AI-assisted dev', 'MCP (Model Context Protocol)', 'RAG', 'n8n', 'Workflow Automation', 'Figma', 'Linear'],
   },
 ]
 
